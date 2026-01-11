@@ -1,10 +1,10 @@
 #include "stock_data.h"
 
-int main() {
-    int n = 20;
-    StockDataArray* data = stock_data_create(n);
+const int NUMBER_OF_ENTRIES = 20;
 
-    // fill array with dummy data
-    // visualize data with TROOT.h
+int main() {
+    StockDataArray* data = stock_data_create(NUMBER_OF_ENTRIES);
+    stock_data_generate_dummy_data(data);
+    stock_data_print_entries(data);
 }
 
