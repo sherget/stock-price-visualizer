@@ -23,7 +23,7 @@ void stock_data_free(StockDataArray* stock_data) {
 void stock_data_generate_dummy_data(StockDataArray* stock_data) {
     for (int i=0; i<stock_data->max_size; ++i) {
         int price_in_cents = rand() % 100 + 1;
-        stock_data_add_entry(stock_data, price_in_cents);
+        stock_data_add_entry(stock_data, price_in_cents, 1);
     }
 }
 
@@ -35,11 +35,11 @@ void stock_data_print_entries(StockDataArray* stock_data) {
     }
 }
 
-int stock_data_add_entry(StockDataArray* stock_data, int price_in_cents) {
+int stock_data_add_entry(StockDataArray* stock_data, int price_in_cents, int randomize) {
     StockDatum* entry = &stock_data->entries[stock_data->current];
     
     entry->price_in_cents = price_in_cents;
-    entry->timestamp = time(NULL) + rand() % 10001;
+    entry->timestamp = randomize ? time(NULL) + rand() % 1000001 : time(NULL);
 
     stock_data->current++;
 
