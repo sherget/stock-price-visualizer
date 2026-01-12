@@ -39,7 +39,7 @@ int stock_data_add_entry(StockDataArray* stock_data, int price_in_cents) {
     StockDatum* entry = &stock_data->entries[stock_data->current];
     
     entry->price_in_cents = price_in_cents;
-    entry->timestamp = time(NULL);
+    entry->timestamp = time(NULL) + rand() % 10001;
 
     stock_data->current++;
 
